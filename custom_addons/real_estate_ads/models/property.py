@@ -24,7 +24,7 @@ class Property(models.Model):
     # SELECTION TAKE A LIST Tuples '()', not Maps/Sets '{}'
     garden_orientation = fields.Selection([('north', 'North'), ('south', 'South'),
                                            ('west', 'West'), ('east', 'East')],
-                                          string="Garden Orientation", default=('east', 'East'))
+                                          string="Garden Orientation", default='east')
 
     # Odoo will generate some fields automatically like the following:
     # id, create_date, create_uid, write_date, write_uid
