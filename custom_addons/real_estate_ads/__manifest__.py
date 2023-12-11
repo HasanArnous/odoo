@@ -1,10 +1,10 @@
 {
-    "name": "Real State Ads",
+    "name": "Real Estate Ads",
     "version": "1.0",
     "author": "HASyriAN",
     "website": "https://www.orait.com.sa",
     "description": """
-        Real State Advertisement, a custom addon for Odoo
+        Real Estate Advertisement, a custom addon for Odoo
     """,
     "application": True,
     "installable": True,
