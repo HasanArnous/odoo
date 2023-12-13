@@ -9,6 +9,7 @@ class Property(models.Model):
     # HERE WE ADD THE FIELDS
     # we can use something like 'readonly' and other parameters as well
     name = fields.Char(string="Name", required=True)
+    tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     description = fields.Text(string="Description", required=True)
     type_id = fields.Many2one("estate.property.type", string="Type")
     post_code = fields.Char(string="Post Code")
@@ -35,4 +36,11 @@ class PropertyType(models.Model):
     _name = "estate.property.type"
 
     name = fields.Char(string="name", required=True)
+    _description = "Property Type"
 
+
+class PropertyTag(models.Model):
+    _name = "estate.property.tag"
+    _description = "Property Tag"
+
+    name = fields.Char(string="name", required=True)
