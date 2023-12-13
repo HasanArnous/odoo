@@ -9,6 +9,7 @@
         </menuitem>
         <menuitem id="real_estate_ads_settings" name="Settings">
             <menuitem id="real_estate_ads_types" name="Types" action="real_estate_ads.action_property_type"/>
+            <menuitem id="real_estate_ads_tags" name="Tags" action="real_estate_ads.action_property_tag"/>
         </menuitem>
     </menuitem>
 </odoo>
