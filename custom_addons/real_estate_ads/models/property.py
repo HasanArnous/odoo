@@ -9,8 +9,8 @@ class Property(models.Model):
     # HERE WE ADD THE FIELDS
     # we can use something like 'readonly' and other parameters as well
     name = fields.Char(string="Name", required=True)
-    tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     description = fields.Text(string="Description", required=True)
+    tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     type_id = fields.Many2one("estate.property.type", string="Type")
     post_code = fields.Char(string="Post Code")
     date_availability = fields.Date(string="Available From")
@@ -27,6 +27,7 @@ class Property(models.Model):
     garden_orientation = fields.Selection([('north', 'North'), ('south', 'South'),
                                            ('west', 'West'), ('east', 'East')],
                                           string="Garden Orientation", default='east')
+    offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
 
     # Odoo will generate some fields automatically like the following:
     # id, create_date, create_uid, write_date, write_uid
