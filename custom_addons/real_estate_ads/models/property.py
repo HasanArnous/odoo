@@ -28,6 +28,8 @@ class Property(models.Model):
                                            ('west', 'West'), ('east', 'East')],
                                           string="Garden Orientation", default='east')
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
+    sales_id = fields.Many2one("res.users", string="Salesman")
+    buyer_id = fields.Many2one("res.partner", string="Buyer")
 
     # Odoo will generate some fields automatically like the following:
     # id, create_date, create_uid, write_date, write_uid
