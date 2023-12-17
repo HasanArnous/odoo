@@ -12,7 +12,7 @@ class PropertyOffer(models.Model):
     partner_id = fields.Many2one('res.partner', string="Customer")
     property_id = fields.Many2one('estate.property', string="Property")
     validity = fields.Integer(string="Validity")
-    deadline = fields.Date(stirng="Deadline", compute='_compute_deadline', inverse='_inverse_deadline')
+    deadline = fields.Date(string="Deadline", compute='_compute_deadline', inverse='_inverse_deadline')
 
     @api.depends('creation_date', 'validity')
     def _compute_deadline(self):

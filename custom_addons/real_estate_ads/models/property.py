@@ -51,7 +51,7 @@ class Property(models.Model):
 class PropertyType(models.Model):
     _name = "estate.property.type"
 
-    name = fields.Char(string="name", required=True)
+    name = fields.Char(string="Name", required=True)
     _description = "Property Type"
 
 
@@ -59,4 +59,4 @@ class PropertyTag(models.Model):
     _name = "estate.property.tag"
     _description = "Property Tag"
 
-    name = fields.Char(string="name", required=True)
+    name = fields.Char(string="Name", required=True)
