@@ -18,7 +18,9 @@
         "views/menu_items.xml",
 
         # Data
-        "data/property_type.xml"
+        # Odoo team always recomend using csv files instead of xml files.
+        # "data/property_type.xml"
+        "data/estate.property.type.csv"
     ],
     "demo": [],
     "license": "LGPL-3"
