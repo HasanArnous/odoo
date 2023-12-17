@@ -47,6 +47,7 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
+                                    <field name="total_area"/>
                                 </group>
                             </page>
                             <page string="Offers">
@@ -54,6 +55,7 @@
                                     <tree editable="bottom">
                                         <field name="price"/>
                                         <field name="partner_id"/>
+                                        <field name="creation_date"/>
                                         <field name="validity"/>
                                         <field name="deadline"/>
                                         <field name="status" nolabel="1"/>
