@@ -16,6 +16,9 @@
         "views/property_type_view.xml",
         "views/property_tag_view.xml",
         "views/menu_items.xml",
+
+        # Data
+        "data/property_type.xml"
     ],
     "demo": [],
     "license": "LGPL-3"
