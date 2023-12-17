@@ -22,6 +22,8 @@
         # "data/property_type.xml"
         "data/estate.property.type.csv"
     ],
-    "demo": [],
+    "demo": [
+        "demo/property_tag.xml"
+    ],
     "license": "LGPL-3"
 }
