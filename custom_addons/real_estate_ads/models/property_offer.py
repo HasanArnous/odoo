@@ -6,9 +6,9 @@ from odoo.exceptions import ValidationError
 class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Property Offers"
-    _sql_constraints = [
-        ("check_validity", "check(validity > 0)", "Deadline cannot be before or equal to the creation date"),
-    ]
+    # _sql_constraints = [
+    #     ("check_validity", "check(validity > 0)", "Deadline cannot be before or equal to the creation date"),
+    # ]
 
     price = fields.Float(string="Price")
     status = fields.Selection([('Accepted', 'accepted'), ('Refused', 'refused',)], string="Status")
@@ -41,13 +41,60 @@ class PropertyOffer(models.Model):
                 rec['creation_date'] = fields.Date.today()
         return super(PropertyOffer, self).create(vals)
 
-    # @api.constrains('validity')
-    # def _check_validity(self):
-    #     for rec in self:
-    #         if rec.deadline and rec.deadline <= rec.creation_date:
-    #             raise ValidationError(_("Deadline cannot be before or equal to the creation date"))
+    @api.constrains('validity')
+    def _check_validity(self):
+        for rec in self:
+            if rec.deadline and rec.deadline <= rec.creation_date:
+                raise ValidationError(_("Deadline cannot be before or equal to the creation date"))
 
     # Will run every day (it can be configured from the scheduled Actions)
     @api.autovacuum
     def _clean_offers(self):
-        self.search([('status', '=', 'refused')]).unlink()
+        self.search([('status', '=', 'refused')]).unlink()  # => Delete the record
+
+    def write(self, vals):
+        # will print the changes..... ex. => {'price': 150000}
+        print(vals)
+        # get only companies
+        print(self.env.cr)  # will print the current cursor ex. <odoo.sql_db.Cursor object at 0x000001FCDEDC99F0>
+        print(self.env.uid)  # will print the current model id ex. 2
+        print(self.env.context)  # will print the current context info
+        #  ex:
+        #  {
+        #  'lang': 'en_US',
+        #  'tz': 'Asia/Riyadh',
+        #  'uid': 2,
+        #  'allowed_company_ids': [1],
+        #  'params': {
+        #       'id': 1,
+        #       'cids': 1,
+        #       'menu_id': 300,
+        #       'action': 358,
+        #       'model':
+        #       'estate.property',
+        #       'view_type':
+        #       'form'
+        #     }
+        #   }
+        companies = self.env['res.partner'].search([
+            ('is_company', '=', 'True'),
+        ], limit=3, order='name asc')
+        print(companies)  # => res.partner(14, 10, 11)
+        companies_count = self.env['res.partner'].search_count([
+            ('is_company', '=', 'True'),
+        ])
+        print(companies_count)  # => 8
+        print(type(companies))  # => <class 'odoo.api.res.partner'>
+        if len(companies) > 0:
+            a_company = self.env['res.partner'].browse(companies[0].id)
+            print(a_company)  # => res.partner(14,)
+            print(a_company.name)  # => Azure Interior
+            phone_numbers = companies.mapped('phone')
+            print(phone_numbers)  # => ['(870)-931-0505', '(603)-996-3829', '(941)-284-4875']
+            print(companies.filtered(lambda c: c.phone == "(870)-931-0505"))  # => res.partner(14,)
+        return super(PropertyOffer, self).write(vals)
+
+    def unlink(self):
+        # We can override the unlink method in case we need to check or remove anything else before
+        # removing the record
+        return super(PropertyOffer, self).unlink()
