@@ -6,6 +6,9 @@ from odoo.exceptions import ValidationError
 class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Property Offers"
+    _sql_constraints = [
+        ("check_validity", "check(validity > 0)", "Deadline cannot be before or equal to the creation date"),
+    ]
 
     price = fields.Float(string="Price")
     status = fields.Selection([('Accepted', 'accepted'), ('Refused', 'refused',)], string="Status")
@@ -38,11 +41,11 @@ class PropertyOffer(models.Model):
                 rec['creation_date'] = fields.Date.today()
         return super(PropertyOffer, self).create(vals)
 
-    @api.constrains('validity')
-    def _check_validity(self):
-        for rec in self:
-            if rec.deadline and rec.deadline <= rec.creation_date:
-                raise ValidationError(_("Deadline cannot be before or equal to the creation date"))
+    # @api.constrains('validity')
+    # def _check_validity(self):
+    #     for rec in self:
+    #         if rec.deadline and rec.deadline <= rec.creation_date:
+    #             raise ValidationError(_("Deadline cannot be before or equal to the creation date"))
 
     # Will run every day (it can be configured from the scheduled Actions)
     @api.autovacuum
