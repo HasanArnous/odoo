@@ -10,6 +10,13 @@ class Property(models.Model):
     # we can use something like 'readonly' and other parameters as well
     name = fields.Char(string="Name", required=True)
     description = fields.Text(string="Description", required=True)
+    state = fields.Selection(selection=[
+        ("new", "New"),
+        ("received", "Offer Received"),
+        ("accepted", "Offer Accepted"),
+        ("sold", "Sold"),
+        ("canceled", "Canceled")
+    ], string="Status", default="new")
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     type_id = fields.Many2one("estate.property.type", string="Type")
     post_code = fields.Char(string="Post Code")
@@ -48,6 +55,11 @@ class Property(models.Model):
     # Odoo will generate some fields automatically like the following:
     # id, create_date, create_uid, write_date, write_uid
 
+    def action_sold(self):
+        self.state = 'sold'
+
+    def action_cancel(self):
+        self.state = 'canceled'
 
 class PropertyType(models.Model):
     _name = "estate.property.type"

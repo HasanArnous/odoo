@@ -13,6 +13,7 @@
                     <field name="expected_price"/>
                     <field name="best_offer"/>
                     <field name="selling_price"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -22,6 +23,12 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="action_sold" type="object" string="Sold" class="btn btn-primary"/>
+                        <button name="action_cancel" type="object" string="Cancel" class="btn btn-danger"/>
+                        <field name="state" widget="statusbar" />
+<!--                        we can use statusbar_visible="new,accepted,..." to list only those states-->
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
