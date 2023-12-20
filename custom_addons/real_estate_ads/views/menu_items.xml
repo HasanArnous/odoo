@@ -6,6 +6,7 @@
               sequence="10">
         <menuitem id="real_estate_ads_ads_menu" name="Ads">
             <menuitem id="real_estate_ads_property" name="Property" action="real_estate_ads.action_property"/>
+            <menuitem id="real_estate_ads_property_offer" name="Offer" action="real_estate_ads.action_property_offer_view"/>
         </menuitem>
         <menuitem id="real_estate_ads_settings" name="Settings">
             <menuitem id="real_estate_ads_types" name="Types" action="real_estate_ads.action_property_type"/>
