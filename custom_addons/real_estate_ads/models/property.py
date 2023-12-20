@@ -68,6 +68,15 @@ class Property(models.Model):
     def action_cancel(self):
         self.state = 'canceled'
 
+    def action_property_offer_smart_view(self):
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "estate.property.offer",
+            "name": f"{self.name} - Offers",
+            "view_mode": "tree,form",
+            "domain": [('property_id', '=', self.id)]
+        }
+
 class PropertyType(models.Model):
     _name = "estate.property.type"
 

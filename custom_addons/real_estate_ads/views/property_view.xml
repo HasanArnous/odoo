@@ -39,7 +39,8 @@
                     <sheet>
 <!--                        The name and class of the div is critical it should not be changed!!-->
                         <div class="oe_button_box" name="button_box">
-                            <button class="oe_stat_button" name="%(real_estate_ads.action_property_offer_smart_view)d" type="action">
+<!--                            <button class="oe_stat_button" name="%(real_estate_ads.action_property_offer_smart_view)d" type="action">-->
+                            <button class="oe_stat_button" name="action_property_offer_smart_view" type="object">
                                 <field name="offer_count" widget="statinfo" string="Offers"/>
                             </button>
                         </div>
