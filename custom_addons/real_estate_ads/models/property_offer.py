@@ -10,8 +10,19 @@ class PropertyOffer(models.Model):
     #     ("check_validity", "check(validity > 0)", "Deadline cannot be before or equal to the creation date"),
     # ]
 
+    @api.depends('partner_id', 'property_id')
+    def _compute_name(self):
+        for rec in self:
+            if rec.partner_id and rec.property_id:
+                rec.name = f"{rec.property_id.name} - {rec.partner_id.name}'s Offer"
+            else:
+                rec.name = False
+
+    name = fields.Char(string="description", compute='_compute_name')
     price = fields.Float(string="Price")
-    status = fields.Selection([('Accepted', 'accepted'), ('Refused', 'refused',)], string="Status")
+    status = fields.Selection([
+        ('new', 'New'), ('accepted', 'Accepted'), ('refused', 'Refused',)
+    ], string="Status", default='new')
     creation_date = fields.Date(string="Creation Date")
     partner_id = fields.Many2one('res.partner', string="Customer")
     property_id = fields.Many2one('estate.property', string="Property")
@@ -98,3 +109,9 @@ class PropertyOffer(models.Model):
         # We can override the unlink method in case we need to check or remove anything else before
         # removing the record
         return super(PropertyOffer, self).unlink()
+
+    def action_accept(self):
+        self.status = 'accepted'
+
+    def action_refuse(self):
+        self.status = 'refused'
