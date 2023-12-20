@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
+        <record id="action_property_offer_smart_view" model="ir.actions.act_window">
+            <field name="res_model">estate.property.offer</field>
+            <field name="name">Property Offers</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('property_id', '=', active_id)]</field>
+        </record>
+
         <record id="estate_property_tree_view" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
@@ -30,6 +37,12 @@
 <!--                        we can use statusbar_visible="new,accepted,..." to list only those states-->
                     </header>
                     <sheet>
+<!--                        The name and class of the div is critical it should not be changed!!-->
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="%(real_estate_ads.action_property_offer_smart_view)d" type="action">
+                                <field name="offer_count" widget="statinfo" string="Offers"/>
+                            </button>
+                        </div>
                         <group>
                             <field name="name"/>
                             <field name="tag_ids" widget="many2many_tags"/>

@@ -55,6 +55,13 @@ class Property(models.Model):
     # Odoo will generate some fields automatically like the following:
     # id, create_date, create_uid, write_date, write_uid
 
+    @api.depends('offer_ids')
+    def _compute_offers_count(self):
+        for rec in self:
+            rec.offer_count = len(rec.offer_ids)
+
+    offer_count = fields.Integer(string="Offer Count", compute=_compute_offers_count)
+
     def action_sold(self):
         self.state = 'sold'
 
