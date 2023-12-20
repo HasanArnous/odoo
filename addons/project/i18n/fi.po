@@ -1303,7 +1303,7 @@ msgstr ""
 #. module: project
 #: model_terms:ir.ui.view,arch_db:project.portal_my_task
 msgid "Communication history"
-msgstr ""
+msgstr "Viestintähistoria"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_project__company_id
@@ -4541,7 +4541,7 @@ msgstr ""
 #: model:mail.message.subtype,name:project.mt_project_task_canceled
 #: model:mail.message.subtype,name:project.mt_task_canceled
 msgid "Task Canceled"
-msgstr ""
+msgstr "Tehtävä peruutettu"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_project__task_count
@@ -5311,6 +5311,14 @@ msgid ""
 "\n"
 "        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Käytä näitä avainsanoja otsikossa asettaaksesi uusia tehtäviä:\n"
+"\n"
+"        30h Varaa tehtävälle 30 tuntia\n"
+"        #tags Aseta tehtävälle tunnisteet\n"
+"        @user Määritä tehtävä käyttäjälle\n"
+"        ! Aseta tehtävälle korkea prioriteetti\n"
+"\n"
+"        Varmista, että käytät oikeaa muotoa ja järjestystä esim. Paranna konfigurointinäyttöä 5h #feature #v16 @Mitchell !"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_task_stage_personal__user_id

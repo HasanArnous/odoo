@@ -780,6 +780,7 @@ var SnippetEditor = Widget.extend({
 
             if (option.forceNoDeleteButton) {
                 this.$el.add($optionsSection).find('.oe_snippet_remove').addClass('d-none');
+                this.$el.add($optionsSection).find('.oe_snippet_clone').addClass('d-none');
             }
 
             if (option.displayOverlayOptions) {
@@ -1895,7 +1896,7 @@ var SnippetsMenu = Widget.extend({
 
         const toolbarEl = this._toolbarWrapperEl.firstChild;
         toolbarEl.classList.remove('oe-floating');
-        this.options.wysiwyg.toolbarEl.style.display = 'none';
+        this.options.wysiwyg.toolbarEl.classList.add('d-none');
         this.options.wysiwyg.setupToolbar(toolbarEl);
         this._addToolbar();
         this._checkEditorToolbarVisibilityCallback = this._checkEditorToolbarVisibility.bind(this);
@@ -2119,6 +2120,7 @@ var SnippetsMenu = Widget.extend({
         // Dispose BS tooltips.
         this.tooltips.dispose();
         options.clearServiceCache();
+        options.clearControlledSnippets();
     },
 
     //--------------------------------------------------------------------------

@@ -3,10 +3,10 @@
 # 	* website_slides
 # 
 # Translators:
-# Tomáš Píšek, 2023
 # Jakub Smolka, 2023
 # Ivana Bartonkova, 2023
 # Wil Odoo, 2023
+# Tomáš Píšek, 2023
 # Aleš Fiala <f.ales1@seznam.cz>, 2023
 # 
 msgid ""
@@ -1493,7 +1493,7 @@ msgstr "Buďte upozorněni na přidání nového obsahu."
 #. module: website_slides
 #: model:ir.model.fields,field_description:website_slides.field_slide_channel_invite__body_has_template_value
 msgid "Body content is the same as the template"
-msgstr ""
+msgstr "Tělo obsahu se shoduje se šablonou"
 
 #. module: website_slides
 #: model:ir.model.fields,field_description:website_slides.field_slide_channel__can_comment
@@ -6655,7 +6655,7 @@ msgstr "YouTube"
 #. module: website_slides
 #: model:ir.model.fields.selection,name:website_slides.selection__slide_slide__slide_type__youtube_video
 msgid "YouTube Video"
-msgstr ""
+msgstr "YouTube video"
 
 #. module: website_slides
 #: model_terms:ir.ui.view,arch_db:website_slides.mail_notification_channel_invite

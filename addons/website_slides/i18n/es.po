@@ -5,7 +5,6 @@
 # Translators:
 # Lucia Pacheco, 2023
 # Wil Odoo, 2023
-# Pedro M. Baeza <pedro.baeza@tecnativa.com>, 2023
 # Larissa Manderfeld, 2023
 # 
 msgid ""
@@ -458,7 +457,7 @@ msgid ""
 "title=\"Duration\"/>"
 msgstr ""
 "<i class=\"fa fa-clock-o me-2\" aria-label=\"Duration\" role=\"img\" "
-"title=\"Duración\"/>"
+"title=\"Duration\"/>"
 
 #. module: website_slides
 #: model_terms:ir.ui.view,arch_db:website_slides.course_slides_cards
@@ -1220,7 +1219,7 @@ msgstr "Accesado el"
 #. module: website_slides
 #: model_terms:ir.ui.view,arch_db:website_slides.snippet_options
 msgid "Achievements"
-msgstr ""
+msgstr "Logros"
 
 #. module: website_slides
 #: model:ir.model.fields,field_description:website_slides.field_slide_channel__message_needaction
@@ -2720,12 +2719,12 @@ msgstr "Nombre mostrado"
 #. module: website_slides
 #: model:slide.question,question:website_slides.slide_slide_demo_2_0_question_0
 msgid "Do you make beams out of lemon trees?"
-msgstr ""
+msgstr "¿Hace vigas de limoneros?"
 
 #. module: website_slides
 #: model:slide.question,question:website_slides.slide_slide_demo_2_0_question_1
 msgid "Do you make lemons out of beams?"
-msgstr ""
+msgstr "¿Hace limones con vigas?"
 
 #. module: website_slides
 #. odoo-javascript
@@ -2841,7 +2840,7 @@ msgstr "Descargar contenido"
 #. module: website_slides
 #: model:ir.model.fields,field_description:website_slides.field_slide_slide_resource__download_url
 msgid "Download URL"
-msgstr ""
+msgstr "Descargar URL"
 
 #. module: website_slides
 #: model:slide.slide,name:website_slides.slide_slide_demo_4_10
@@ -5919,6 +5918,8 @@ msgid ""
 "The Enroll Policy should be set to 'On Invitation' when visibility is set to"
 " 'Course Attendees'"
 msgstr ""
+"La política de inscripción debe estar establecida como \"Por invitación\" "
+"cuando la visibilidad esta establecida como \"Asistentes del curso\". "
 
 #. module: website_slides
 #. odoo-javascript
@@ -5951,7 +5952,7 @@ msgstr ""
 #: code:addons/website_slides/controllers/main.py:0
 #, python-format
 msgid "The contact associated with this invitation does not seem to be valid."
-msgstr ""
+msgstr "Parece que el contacto asociado con esta invitación no es válido. "
 
 #. module: website_slides
 #: model:ir.model.fields,help:website_slides.field_slide_slide__is_preview
@@ -6856,6 +6857,8 @@ msgid ""
 "You cannot mark a slide quiz as completed if you are not among its members "
 "or it is unpublished."
 msgstr ""
+"No puede marcar una prueba de diapositiva como completada si no es parte de "
+"sus miembros o si no está publicada."
 
 #. module: website_slides
 #. odoo-python

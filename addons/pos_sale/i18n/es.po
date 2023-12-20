@@ -44,21 +44,21 @@ msgstr "<span style=\"margin: 0px 5px;\">:</span>"
 #: code:addons/pos_sale/static/src/app/order_management_screen/sale_order_management_screen/sale_order_management_screen.js:0
 #, python-format
 msgid "A new order has been created."
-msgstr ""
+msgstr "Se creó una nueva orden."
 
 #. module: pos_sale
 #. odoo-javascript
 #: code:addons/pos_sale/static/src/app/order_management_screen/sale_order_management_screen/sale_order_management_screen.js:0
 #, python-format
 msgid "Apply a down payment (fixed amount)"
-msgstr ""
+msgstr "Aplicar un anticipo (importe fijo)"
 
 #. module: pos_sale
 #. odoo-javascript
 #: code:addons/pos_sale/static/src/app/order_management_screen/sale_order_management_screen/sale_order_management_screen.js:0
 #, python-format
 msgid "Apply a down payment (percentage)"
-msgstr ""
+msgstr "Aplicar un anticipo (porcentaje)"
 
 #. module: pos_sale
 #. odoo-javascript
@@ -149,7 +149,7 @@ msgstr "Producto para adelanto"
 #: code:addons/pos_sale/static/src/app/order_management_screen/sale_order_management_screen/sale_order_management_screen.js:0
 #, python-format
 msgid "Due balance: %s"
-msgstr ""
+msgstr "Saldo vencido: %s"
 
 #. module: pos_sale
 #. odoo-javascript
