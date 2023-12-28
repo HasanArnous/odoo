@@ -5,7 +5,9 @@
             <field name="name">estate.property.offer.tree</field>
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-primary="status == 'new'"
+                      decoration-success="status == 'accepted'"
+                      decoration-danger="status == 'refused'">
                     <field name="id"/>
                     <field name="name"/>
                     <field name="price"/>
