@@ -103,15 +103,60 @@ class PropertyOffer(models.Model):
             phone_numbers = companies.mapped('phone')
             print(phone_numbers)  # => ['(870)-931-0505', '(603)-996-3829', '(941)-284-4875']
             print(companies.filtered(lambda c: c.phone == "(870)-931-0505"))  # => res.partner(14,)
-        return super(PropertyOffer, self).write(vals)
+
+        result = super(PropertyOffer, self).write(vals)
+        if result:
+            # Setting the Status of the Property based on the Offers
+            offerProperty = self.env['estate.property'].search([
+                ('id', '=', self.property_id.id),
+            ])
+            if offerProperty:
+                if (len(offerProperty.offer_ids) == 0 or
+                        (offerProperty.state == 'new' and len(offerProperty.offer_ids) > 0)):
+                    offerProperty.write({
+                        'state': 'received'
+                    })
+
+        return result
 
     def unlink(self):
         # We can override the unlink method in case we need to check or remove anything else before
         # removing the record
-        return super(PropertyOffer, self).unlink()
+        offer_property = self.env['estate.property'].search([
+            ('id', '=', self.property_id.id),
+        ])
+        result = super(PropertyOffer, self).unlink()
+        if result:
+            if offer_property:
+                if len(offer_property.offer_ids) == 0:
+                    offer_property.state = 'new'
+        return result
+
+    def validate_accept_offer(self):
+        offers = self.env['estate.property.offer'].search([
+            ('property_id', '=', self.property_id.id),
+            ('status', '=', 'accepted')
+        ])
+        if offers:
+            raise ValidationError("You have an accepted offer already!")
 
     def action_accept(self):
+        self.validate_accept_offer()
         self.status = 'accepted'
+        for rec in self:
+            rec.property_id.write({
+                'selling_price': rec.price,
+                'state': 'accepted'
+            })
 
     def action_refuse(self):
         self.status = 'refused'
+        accepted_offers = self.env['estate.property.offer'].search([
+            ('property_id', '=', self.property_id.id),
+            ('status', '=', 'accepted')
+        ])
+        if not accepted_offers:
+            self.property_id.write({
+                'state': 'received',
+                'selling_price': 0
+            })
