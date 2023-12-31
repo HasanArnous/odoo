@@ -3,12 +3,36 @@ import datetime
 from odoo.exceptions import ValidationError
 
 
+class AbstractOffer(models.AbstractModel):
+    _name = "abstract.model.offer"
+    _description = "Abstract Offer Model"
+
+    email = fields.Char(string='Email')
+    phone_number = fields.Char(string='Phone Number')
+
+
+# You can create records and modify them like a regular model(access right,...) but it meant to be temporary and the
+# vacuum will clean it based on some parameters
+class TransientOffer(models.TransientModel):
+    _name = "transient.model.offer"
+    _description = "Transient Offer Model"
+    _transient_max_count = 0  # it means unlimited(you can specify the max number of records)
+    _transient_max_hours = 24
+
+    # This is the method that will be triggered on the above parameters (max count, and max hours)
+    @api.autovacuum
+    def _transient_vacuum(self):
+        super(TransientOffer, self)._transient_vacuum()
+
+
 class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Property Offers"
     # _sql_constraints = [
     #     ("check_validity", "check(validity > 0)", "Deadline cannot be before or equal to the creation date"),
     # ]
+    # This is how we inherit from abstract model
+    # _inherit = ['abstract.model.offer']
 
     @api.depends('partner_id', 'property_id')
     def _compute_name(self):
