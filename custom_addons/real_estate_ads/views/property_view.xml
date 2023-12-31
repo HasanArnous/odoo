@@ -8,6 +8,39 @@
             <field name="domain">[('property_id', '=', active_id)]</field>
         </record>
 
+        <record id="estate_property_search_view" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                    <separator/>
+                    <field name="sales_id"/>
+                    <field name="buyer_id"/>
+                    <separator/>
+                    <field name="type_id"/>
+                    <field name="tag_ids"/>
+                    <field name="post_code"/>
+                    <separator/>
+                    <filter name="new_state" string="New" domain="[('state', '=', 'new')]"/>
+                    <filter name="received_state" string="Received Offer" domain="[('state', '=', 'received')]"/>
+                    <filter name="accepted_state" string="Accepted Offer" domain="[('state', '=', 'accepted')]"/>
+                    <filter name="sold_state" string="Sold" domain="[('state', '=', 'sold')]"/>
+                    <filter name="canceled_state" string="Canceled" domain="[('state', '=', 'canceled')]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_status" string="Status" context="{'group_by': 'state'}"/>
+                    </group>
+                    <searchpanel>
+<!--                        The groupby must be existed in the group field like the same above-->
+                        <field name="state" icon="fa-search" groupby="group_by_status" limit="0"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
         <record id="estate_property_tree_view" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
